@@ -1,12 +1,12 @@
 import React from 'react'
 import userIcon from '../../src/assets/userIcon.png'
 
-function ContactList({contacts}) {
+function ContactList({contacts,deleteContact}) {
     return (
         <section className="ContactList">
             {contacts.map(contact=>{
                 return(
-                    <div className="Contact">
+                    <div className="Contact" key={contact.id}>
                         <div>
                             <img src={userIcon}/>
                             {contact.name}
@@ -14,7 +14,7 @@ function ContactList({contacts}) {
                         <div>
                             {contact.phone}
                         </div>
-                        <button>x</button>
+                        <button onClick={()=>deleteContact(contact.id)}>x</button>
                     </div>
                 )
             })}

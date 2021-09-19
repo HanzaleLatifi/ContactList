@@ -34,6 +34,7 @@
   border-radius: 1rem;
   background-color: gray;
   width: 100%;
+  margin: .8rem 0 ;
 }
 .Contact :nth-child(1){
   display: flex;
