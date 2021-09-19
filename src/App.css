@@ -1,0 +1,55 @@
+.App{
+  background-color: #f6f6f6;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App > h1{
+  font-size: 4rem;
+  text-align: center;
+  background-color:grey;
+  width: 100%;
+}
+.AddContact{
+  width: 20vh;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+.ContactList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+
+}
+.ContactList .Contact{
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;  
+  border-radius: 1rem;
+  background-color: gray;
+  width: 100%;
+}
+.Contact :nth-child(1){
+  display: flex;
+  align-items: center;
+  
+}
+.Contact  img{
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1.5rem;
+}
+.Contact button{
+  padding: 1rem 1.5rem;
+  background-color: rgb(226, 43, 43);
+  color: wheat;
+  border-radius: 1rem;
+
+}
+
