@@ -1,6 +1,6 @@
 import React from 'react'
-import userIcon from '../../src/assets/userIcon.png'
 import {Link} from 'react-router-dom'
+import Contact from './Contact'
 
 function ContactList({contacts,deleteContact}) {
     return (
@@ -8,16 +8,7 @@ function ContactList({contacts,deleteContact}) {
             <button> <Link to="/add">Add new Contact</Link> </button>
             {contacts.map(contact=>{
                 return(
-                    <div className="Contact" key={contact.id}>
-                        <div>
-                            <img src={userIcon}/>
-                            {contact.name}
-                        </div>
-                        <div>
-                            {contact.phone}
-                        </div>
-                        <button onClick={()=>deleteContact(contact.id)}>x</button>
-                    </div>
+                   <Contact contact={contact} onDelete={deleteContact} />
                 )
             })}
         </section>
