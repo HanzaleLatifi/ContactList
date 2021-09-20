@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import userIcon from '../../src/assets/userIcon.png'
 
 
@@ -5,13 +6,16 @@ function Contact({ onDelete, contact }) {
     return (
 
         <div className="Contact" key={contact.id}>
-            <div>
-                <img src={userIcon} />
-                {contact.name}
-            </div>
-            <div>
-                {contact.phone}
-            </div>
+            <Link to={{pathname:`user/${contact.id}` , state:{contact:contact} }}>
+                <div>
+                    <img src={userIcon} />
+                    {contact.name}
+                </div>
+                <div>
+                    {contact.phone}
+                </div>
+            </Link>
+
             <button onClick={() => onDelete(contact.id)}>x</button>
         </div>
 

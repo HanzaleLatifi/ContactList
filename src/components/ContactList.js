@@ -8,7 +8,7 @@ function ContactList({contacts,deleteContact}) {
             <button> <Link to="/add">Add new Contact</Link> </button>
             {contacts.map(contact=>{
                 return(
-                   <Contact contact={contact} onDelete={deleteContact} />
+                   <Contact key={contact.id} contact={contact} onDelete={deleteContact} />
                 )
             })}
         </section>
