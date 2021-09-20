@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function AddContact({addNewContact}) {
+function AddContact({addNewContact,history}) {
     const [contact, setContact] = useState({name:"" , phone:""})
     const changeHandler=(e)=>{
         setContact({...contact ,[e.target.name]:e.target.value})
@@ -8,6 +8,9 @@ function AddContact({addNewContact}) {
     const submitHandler=(e)=>{
         e.preventDefault();
         addNewContact(contact)
+        setContact({name:"" , phone:""})
+        history.push("/")
+
     }
     return (
         <section className="AddContact">
