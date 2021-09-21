@@ -3,29 +3,48 @@ import { useState, useEffect } from 'react'
 import AddContact from './components/AddContact';
 import ContactList from './components/ContactList';
 import { Switch, Route } from 'react-router-dom'
-import Contact from './components/Contact';
 import ContactDetail from './components/ContactDetail';
+import getAllContacts from './services/getAllContacts';
+import deleteOneContact from './services/deleteOneContact';
+import addOneContact from './services/addOneContact';
+
+
 
 function App() {
   const [contacts, setContacts] = useState([]);
 
-  const addNewContact = (contact) => {
-    const newObj = { ...contact, id: Math.floor(Math.random() * 6000) }
-    setContacts([...contacts, newObj])
+  const addNewContact = async(contact) => {
+    try {
+      const newObj = { ...contact, id: Math.floor(Math.random() * 6000) }
+      setContacts([...contacts, newObj])
+      await addOneContact(contact)
+      
+    } catch (error) {
+      
+    }
+   
+
   }
-  const deleteContact = (id) => {
-    console.log(id)
+  const deleteContact = async(id) => {
+
     const filter = contacts.filter(c => c.id !== id);
     setContacts(filter)
+    await deleteOneContact(id)
   }
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("contacts"));
-    if (saved) setContacts(saved)
-  }, [])
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+    const getContacts=async()=>{
+        const{data}=await getAllContacts();
+        setContacts(data)
+    }
+    try {
+      getContacts();
 
-  }, [contacts])
+    } catch (error) {
+      
+    }
+    
+  }, [])
+  
   return (
     <div className="App">
       <h1>Contact List</h1>
