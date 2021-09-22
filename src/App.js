@@ -15,9 +15,8 @@ function App() {
 
   const addNewContact = async(contact) => {
     try {
-      const newObj = { ...contact, id: Math.floor(Math.random() * 6000) }
-      setContacts([...contacts, newObj])
-      await addOneContact(contact)
+      const {data}=await addOneContact(contact)
+      setContacts([...contacts,data])
       
     } catch (error) {
       
@@ -26,10 +25,11 @@ function App() {
 
   }
   const deleteContact = async(id) => {
-
+    
+    await deleteOneContact(id)
     const filter = contacts.filter(c => c.id !== id);
     setContacts(filter)
-    await deleteOneContact(id)
+    
   }
   useEffect(() => {
     const getContacts=async()=>{
