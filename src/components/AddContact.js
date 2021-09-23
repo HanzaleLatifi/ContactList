@@ -1,17 +1,26 @@
 import {useState} from 'react'
+import addOneContact from '../services/addOneContact'
 
-function AddContact({addNewContact,history}) {
+function AddContact({history}) {
     const [contact, setContact] = useState({name:"" , phone:""})
     const changeHandler=(e)=>{
         setContact({...contact ,[e.target.name]:e.target.value})
     }
-    const submitHandler=(e)=>{
+
+    const submitHandler=async(e)=>{
         e.preventDefault();
-        addNewContact(contact)
-        setContact({name:"" , phone:""})
+        try {
+            await addOneContact(contact)
+      
+          } catch (error) {
+      
+          }
+        
         history.push("/")
 
     }
+    
+ 
     return (
         <section className="AddContact">
             <form onSubmit={submitHandler}>
